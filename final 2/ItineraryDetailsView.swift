@@ -18,13 +18,14 @@ struct itineraryDetailsView: View {
             DatePicker("End:", selection: $itinerary.enddate)
             Spacer()
         }
+        .padding()
         .navigationTitle(itinerary.country)
-        .navigationBarItems(trailing:
-                                NavigationLink(destination: addItemView(itineraryManager: itineraryManager)) {
-            Image(systemName: "Add Item")
-                .resizable()
-                .frame(width: 18, height: 18)
-        })
+//        .navigationBarItems(trailing:
+//                                NavigationLink(destination: addItemView(itineraryManager: itineraryManager)) {
+//            Image(systemName: "Add Item")
+//                .resizable()
+//                .frame(width: 18, height: 18)
+//        })
         .toolbar{
             ToolbarItem{
                 Button{

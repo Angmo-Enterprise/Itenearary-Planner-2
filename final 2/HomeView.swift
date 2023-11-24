@@ -74,17 +74,6 @@ struct HomeView: View {
                     .listRowBackground(Color.white)
                 }
             }
-//            .overlay {
-//                if #available(iOS 17.0, *) {
-//                    VStack {
-//                        TipView(addIteneararyTip, arrowEdge: .top)
-//                        Spacer()
-//                    }
-//                } else {
-//                    // Fallback on earlier versions
-//                }
-//
-//            }
             .navigationTitle("Home")
             .toolbar {
                 ToolbarItem {

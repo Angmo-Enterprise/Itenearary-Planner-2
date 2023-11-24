@@ -24,8 +24,7 @@ struct itineraryDetailsView: View {
             Image(systemName: "Add Item")
                 .resizable()
                 .frame(width: 18, height: 18)
-        }
-        )
+        })
         .toolbar{
             ToolbarItem{
                 Button{

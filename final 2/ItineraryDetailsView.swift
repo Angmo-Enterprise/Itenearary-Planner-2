@@ -29,7 +29,7 @@ struct itineraryDetailsView: View {
         .toolbar{
             ToolbarItem{
                 Button{
-                    addItemView(itineraryManager: itineraryManager)
+                    addItemView(itinearary: $itinerary, itineraryManager: itineraryManager)
                 }label: {
                     Image(systemName: "plus")
                 }

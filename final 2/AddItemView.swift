@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct addItemView: View {
+    
+    @Binding var itinearary: Itinerary
     @ObservedObject var itineraryManager: ItineraryManager
     @State private var searchView = false
+    
     var body: some View {
         NavigationStack{
             Text("New Place")
@@ -23,12 +26,9 @@ struct addItemView: View {
                     }
                 }
             }
-        }.navigationTitle("Add an item")
+        }
+        .navigationTitle("Add an item")
     }
 }
 
-struct addItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        addItemView(itineraryManager: ItineraryManager())
-    }
-}
+

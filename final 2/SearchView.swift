@@ -63,7 +63,7 @@ struct SearchView: View {
         .frame(maxHeight: .infinity, alignment: .top)
         .background {
             NavigationLink(tag: "MAPVIEW", selection: $navigationTag) {
-                MapViewSelection(itienararyManager: itineararyManager)
+                MapViewSelection( itienararyManager: itineararyManager)
                     .environmentObject(locationManager)
                     .navigationBarHidden(true)
             } label: {}
@@ -80,6 +80,7 @@ struct SearchView_Previews: PreviewProvider {
 
 struct MapViewSelection: View {
 
+    @State private var address: String = "adddressssssvdkajjksbfjklbsd"
     @ObservedObject var itienararyManager: ItineraryManager
     @EnvironmentObject var locationManager: LocationManager
     @Environment(\.dismiss) var dismiss
@@ -122,7 +123,7 @@ struct MapViewSelection: View {
                     .padding(.vertical, 10)
 
                     Button {
-                        // Your action here
+                        
                     } label: {
                         Text("Confirm Location")
                             .fontWeight(.semibold)

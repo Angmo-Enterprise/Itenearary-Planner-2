@@ -16,7 +16,7 @@ struct final_2App: App {
                 .task{
                     if #available(iOS 17.0, *) {
                         try? Tips.configure([
-                            .displayFrequency(.hourly),
+                            .displayFrequency(.immediate),
                             .datastoreLocation(.applicationDefault)])
                     } else {
                         // Fallback on earlier versions

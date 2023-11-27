@@ -13,6 +13,8 @@ struct itineraryDetailsView: View {
     @ObservedObject var itineraryManager: ItineraryManager
     @State var additemtransit = false
     
+    @State private var showSheet = false
+    
     var body: some View {
         VStack{
             DatePicker("Start:", selection: $itinerary.startdate)
@@ -63,11 +65,14 @@ struct itineraryDetailsView: View {
         .toolbar{
             ToolbarItem{
                 Button{
-                    addItemView(itinearary: $itinerary, itineraryManager: itineraryManager)
+                    showSheet = true
                 }label: {
                     Image(systemName: "plus")
                 }
             }
+        }
+        .fullScreenCover(isPresented: $showSheet) {
+            addItemView(itinearary: $itinerary, itineraryManager: itineraryManager)
         }
     }
 }

@@ -73,7 +73,7 @@ struct itineraryView: View {
             }
             .navigationTitle("Itineraries")
             .toolbar {
-                ToolbarItemGroup {
+                ToolbarItem(placement: .topBarTrailing){
                     Button {
                         addview = true
                     } label: {

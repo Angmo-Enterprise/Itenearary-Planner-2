@@ -11,13 +11,25 @@ struct addItemView: View {
     
     @Binding var itinearary: Itinerary
     @ObservedObject var itineraryManager: ItineraryManager
-    @State private var searchView = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack{
-            Text("New Place")
-                .font(.largeTitle)
             VStack{
+                HStack{
+                    Spacer()
+                    Button{
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .padding()
+                    }
+                }
+
+                Spacer()
+                Text("New Place")
+                    .font(.largeTitle)
+                
                 HStack{
                     Text("location")
                     NavigationLink("Search for the place name"){
@@ -25,9 +37,11 @@ struct addItemView: View {
                         
                     }
                 }
+                Spacer()
             }
         }
         .navigationTitle("Add an item")
+        
     }
 }
 

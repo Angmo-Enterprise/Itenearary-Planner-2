@@ -46,10 +46,12 @@ struct itineraryDetailsView: View {
                 
             }
             Spacer()
-            DatePicker("Start:", selection: $itinerary.startdate)
-                .padding()
-            DatePicker("End:", selection: $itinerary.enddate)
-                .padding()
+            Group{
+                DatePicker("Start:", selection: $itinerary.startdate)
+                DatePicker("End:", selection: $itinerary.enddate)
+            }
+            .padding()
+
         }
         .padding()
         .navigationTitle(itinerary.country)

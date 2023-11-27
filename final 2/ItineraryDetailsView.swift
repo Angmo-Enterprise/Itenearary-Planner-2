@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct itineraryDetailsView: View {
-    @State private var theManyPlaces: [Itinerary.places] = [Itinerary.places(placename: "Place", address: "Place", distance: 3489, traveltime: 3842, details: "this da detail", starttime: Date.now, timespent: 2376)]
+    @State private var theManyPlaces: [Itinerary.Place] = [Itinerary.Place(placename: "Place", address: "Place", distance: 3489, traveltime: 3842, details: "this da detail", starttime: Date.now, timespent: 2376)]
     @Binding var itinerary: Itinerary
     @ObservedObject var itineraryManager: ItineraryManager
     @State var additemtransit = false
@@ -20,7 +21,7 @@ struct itineraryDetailsView: View {
             DatePicker("Start:", selection: $itinerary.startdate)
             DatePicker("End:", selection: $itinerary.enddate)
             VStack {
-                List(theManyPlaces){ places in
+                List(itinerary.places){ places in
                     HStack(alignment: .top) { // Align items to the top
                         Image(systemName: "arrow")
                             .font(.system(size: 30)) // Adjust the icon size
@@ -72,7 +73,7 @@ struct itineraryDetailsView: View {
             }
         }
         .fullScreenCover(isPresented: $showSheet) {
-            addItemView(itinearary: $itinerary, itineraryManager: itineraryManager)
+            addItemView(itinearary: $itinerary)
         }
     }
 }

@@ -10,7 +10,8 @@ struct SearchView: View {
 
     @StateObject var locationManager: LocationManager = .init()
     @State var navigationTag: String?
-    @ObservedObject var itineararyManager: ItineraryManager
+    @Binding var itinerary: Itinerary
+//    @Binding var address: CLPlacemark
 
     var body: some View {
         VStack {
@@ -63,7 +64,7 @@ struct SearchView: View {
         .frame(maxHeight: .infinity, alignment: .top)
         .background {
             NavigationLink(tag: "MAPVIEW", selection: $navigationTag) {
-                MapViewSelection( itienararyManager: itineararyManager)
+                MapViewSelection(itinerary: $itinerary)
                     .environmentObject(locationManager)
                     .navigationBarHidden(true)
             } label: {}
@@ -72,16 +73,11 @@ struct SearchView: View {
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView(itineararyManager: ItineraryManager())
-    }
-}
 
 struct MapViewSelection: View {
 
-    @State private var address: String = "adddressssssvdkajjksbfjklbsd"
-    @ObservedObject var itienararyManager: ItineraryManager
+//    @Binding var address: CLPlacemark
+    @Binding var itinerary: Itinerary
     @EnvironmentObject var locationManager: LocationManager
     @Environment(\.dismiss) var dismiss
 
@@ -123,7 +119,9 @@ struct MapViewSelection: View {
                     .padding(.vertical, 10)
 
                     Button {
-                        
+                        // this is where you create a Place
+                        // you get a place that's a CLLocation -> convert it into a Place
+                        // append it to the end of itinerary's places array
                     } label: {
                         Text("Confirm Location")
                             .fontWeight(.semibold)

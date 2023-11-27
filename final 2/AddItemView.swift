@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct addItemView: View {
     
     @Binding var itinearary: Itinerary
-    @ObservedObject var itineraryManager: ItineraryManager
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -33,7 +33,7 @@ struct addItemView: View {
                 HStack{
                     Text("location")
                     NavigationLink("Search for the place name"){
-                        SearchView(itineararyManager: itineraryManager)
+                        SearchView(itinerary: $itinearary)
                         
                     }
                 }

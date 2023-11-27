@@ -16,7 +16,8 @@ struct Itinerary: Identifiable, Codable {
     var days: Int
     var totalcost: Int
     
-    struct places: Identifiable, Codable {
+    var places: [Place]
+    struct Place: Identifiable, Codable {
         var id = UUID()
         var placename: String
         var address: String

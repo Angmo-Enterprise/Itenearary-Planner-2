@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 import TipKit
 
 struct HomeView: View {
@@ -104,8 +105,3 @@ struct HomeView: View {
     }
 }
 
-struct Itinerarydetailview_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(itineraryManager: ItineraryManager())
-    }
-}

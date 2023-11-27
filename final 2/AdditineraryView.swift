@@ -65,7 +65,7 @@ struct AddItineraryView: View {
                 }
                 Section {
                     Button("Save", role: .none) {
-                        let newitinerary = Itinerary(country: countryname, startdate: startdatedefault, iscompleted: false, enddate: enddatedefault, days: daysdefault, totalcost: totalcostdefault)
+                        let newitinerary = Itinerary(country: countryname, startdate: startdatedefault, iscompleted: false, enddate: enddatedefault, days: daysdefault, totalcost: totalcostdefault, places: [])
                         print("hello world")
                         print(newitinerary)
                         itineraries.append(newitinerary)

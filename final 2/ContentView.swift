@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
     
@@ -29,10 +30,5 @@ struct ContentView: View {
         .sheet(isPresented: $showSheet, content: {
             IntroPageView()
         })
-    }
-}
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

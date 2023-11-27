@@ -11,6 +11,8 @@ struct SearchView: View {
     @StateObject var locationManager: LocationManager = .init()
     @State var navigationTag: String?
     @Binding var itinerary: Itinerary
+    
+    @State private var showSheet = false
 //    @Binding var address: CLPlacemark
 
     var body: some View {
@@ -38,6 +40,7 @@ struct SearchView: View {
                                 locationManager.addDraggeablePins(coordinate: coordinate)
                                 locationManager.updatePlacemark(location: .init(latitude: coordinate.latitude, longitude: coordinate.longitude))
                             }
+                            showSheet = true
                             navigationTag = "MAPVIEW"
                         } label: {
                             HStack {
@@ -62,14 +65,18 @@ struct SearchView: View {
         }
         .padding()
         .frame(maxHeight: .infinity, alignment: .top)
-        .background {
-            NavigationLink(tag: "MAPVIEW", selection: $navigationTag) {
-                MapViewSelection(itinerary: $itinerary)
-                    .environmentObject(locationManager)
-                    .navigationBarHidden(true)
-            } label: {}
-            .labelsHidden()
+//        .background {
+//            NavigationLink(tag: "MAPVIEW", selection: $navigationTag) {
+//                MapViewSelection(itinerary: $itinerary)
+//                    .environmentObject(locationManager)
+//                    .navigationBarHidden(true)
+//            } label: {}
+//            .labelsHidden()
+//        }
+        .sheet(isPresented: $showSheet){
+            MapViewSelection(itinerary: $itinerary)
         }
+        .environmentObject(locationManager)
     }
 }
 
@@ -87,7 +94,7 @@ struct MapViewSelection: View {
 
     var body: some View {
         ZStack {
-            MapViewHelper()
+            MapViewHelper(locationManager: locationManager)
                 .environmentObject(locationManager)
                 .ignoresSafeArea()
 
@@ -167,7 +174,7 @@ struct MapViewSelection: View {
 
 struct MapViewHelper: UIViewRepresentable {
 
-    @EnvironmentObject var locationManager: LocationManager
+    @ObservedObject var locationManager: LocationManager
 
     func makeUIView(context: Context) -> MKMapView {
         return locationManager.mapView

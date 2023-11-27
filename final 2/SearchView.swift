@@ -80,6 +80,10 @@ struct MapViewSelection: View {
     @Binding var itinerary: Itinerary
     @EnvironmentObject var locationManager: LocationManager
     @Environment(\.dismiss) var dismiss
+    
+    // for places
+    @State private var placeName = ""
+    @State private var address = ""
 
     var body: some View {
         ZStack {
@@ -122,6 +126,11 @@ struct MapViewSelection: View {
                         // this is where you create a Place
                         // you get a place that's a CLLocation -> convert it into a Place
                         // append it to the end of itinerary's places array
+                        
+                        placeName = place.name ?? ""
+                        address = place.postalCode ?? ""
+                        itinerary.places.append(Itinerary.Place(placename: placeName, address: address))
+                        
                     } label: {
                         Text("Confirm Location")
                             .fontWeight(.semibold)

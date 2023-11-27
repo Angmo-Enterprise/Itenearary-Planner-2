@@ -21,10 +21,5 @@ struct Itinerary: Identifiable, Codable {
         var id = UUID()
         var placename: String
         var address: String
-        var distance: Int
-        var traveltime: Int
-        var details: String
-        var starttime = Date()
-        var timespent: Int
     }
 }

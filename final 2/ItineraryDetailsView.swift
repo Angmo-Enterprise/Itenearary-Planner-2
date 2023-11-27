@@ -9,7 +9,6 @@ import SwiftUI
 import MapKit
 
 struct itineraryDetailsView: View {
-    @State private var theManyPlaces: [Itinerary.Place] = [Itinerary.Place(placename: "Place", address: "Place", distance: 3489, traveltime: 3842, details: "this da detail", starttime: Date.now, timespent: 2376)]
     @Binding var itinerary: Itinerary
     @ObservedObject var itineraryManager: ItineraryManager
     @State var additemtransit = false
@@ -18,12 +17,11 @@ struct itineraryDetailsView: View {
     
     var body: some View {
         VStack{
-            DatePicker("Start:", selection: $itinerary.startdate)
-            DatePicker("End:", selection: $itinerary.enddate)
+            
             VStack {
                 List(itinerary.places){ places in
                     HStack(alignment: .top) { // Align items to the top
-                        Image(systemName: "arrow")
+                        Image(systemName: "paperplane.circle.fill")
                             .font(.system(size: 30)) // Adjust the icon size
                             .foregroundColor(.blue)
                             .padding()
@@ -33,19 +31,13 @@ struct itineraryDetailsView: View {
                                 .font(.headline)
                                 .fontWeight(.bold)
                             
-                            
-                            Text("Distance: \(places.distance)m")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                            
-                            
                             // Add a humorous address
                             Text(places.address)
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                         }
                     }
-                    .listRowSeparator(.hidden, edges: .bottom)
+                    .padding()
                 }
                 .toolbar{
                     EditButton()
@@ -54,6 +46,10 @@ struct itineraryDetailsView: View {
                 
             }
             Spacer()
+            DatePicker("Start:", selection: $itinerary.startdate)
+                .padding()
+            DatePicker("End:", selection: $itinerary.enddate)
+                .padding()
         }
         .padding()
         .navigationTitle(itinerary.country)
@@ -73,7 +69,8 @@ struct itineraryDetailsView: View {
             }
         }
         .fullScreenCover(isPresented: $showSheet) {
-            addItemView(itinearary: $itinerary)
+            SearchView(itinerary: $itinerary)
+
         }
     }
 }

@@ -21,5 +21,8 @@ struct Itinerary: Identifiable, Codable {
         var id = UUID()
         var placename: String
         var address: String
+        
+        var startDate = Date.now
+        var endDate = Date.now+1440
     }
 }

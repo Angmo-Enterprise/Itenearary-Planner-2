@@ -137,6 +137,7 @@ struct MapViewSelection: View {
                         placeName = place.name ?? ""
                         address = place.postalCode ?? ""
                         itinerary.places.append(Itinerary.Place(placename: placeName, address: address))
+                        dismiss()
                         
                     } label: {
                         Text("Confirm Location")

@@ -15,7 +15,7 @@ struct itineraryView: View {
     var body: some View {
         NavigationStack {
                 List($itineraryManager.itinerarys, editActions: .all) { $itinerary in
-                    NavigationLink(destination: itineraryDetailsView(itinerary: $itinerary, itineraryManager: itineraryManager)) {
+                    NavigationLink(destination: ItineraryDetailsView(itinerary: $itinerary, itineraryManager: itineraryManager)) {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(itinerary.country)
                                     .font(.headline)

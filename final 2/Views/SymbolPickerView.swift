@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
+struct SymbolPickerView: View {
+    
+    @State private var pickedSymbol = ""
+    
+    var body: some View{
+        VStack{
+            
+        }
+    }
+}

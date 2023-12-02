@@ -65,14 +65,6 @@ struct SearchView: View {
         }
         .padding()
         .frame(maxHeight: .infinity, alignment: .top)
-//        .background {
-//            NavigationLink(tag: "MAPVIEW", selection: $navigationTag) {
-//                MapViewSelection(itinerary: $itinerary)
-//                    .environmentObject(locationManager)
-//                    .navigationBarHidden(true)
-//            } label: {}
-//            .labelsHidden()
-//        }
         .sheet(isPresented: $showSheet){
             MapViewSelection(itinerary: $itinerary)
         }
@@ -83,7 +75,6 @@ struct SearchView: View {
 
 struct MapViewSelection: View {
 
-//    @Binding var address: CLPlacemark
     @Binding var itinerary: Itinerary
     @EnvironmentObject var locationManager: LocationManager
     @Environment(\.dismiss) var dismiss
@@ -135,9 +126,19 @@ struct MapViewSelection: View {
                         // append it to the end of itinerary's places array
                         
                         placeName = place.name ?? ""
-                        address = place.postalCode ?? ""
+                        address = place.postalCode ?? place.locality ?? place.subLocality!
                         itinerary.places.append(Itinerary.Place(placename: placeName, address: address))
+                        
+                        print(place.name ?? "name")
+                        print(place.postalCode ?? "postalCode")
+                        print(place.locality ?? "locality")
+                        print(place.subLocality ?? "subLocality")
+                        print(place.country ?? "country")
+                        print(place.ocean ?? "ocean")
+
+                        
                         dismiss()
+                        
                         
                     } label: {
                         Text("Confirm Location")

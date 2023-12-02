@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct itineraryDetailsView: View {
+struct ItineraryDetailsView: View {
     @Binding var itinerary: Itinerary
     @ObservedObject var itineraryManager: ItineraryManager
     @State var additemtransit = false
@@ -18,9 +18,17 @@ struct itineraryDetailsView: View {
     var body: some View {
         VStack{
             VStack {
-                List($itinerary.places, id: \.id) { $place in
+                List(itinerary.places.sorted {$0.startDate < $1.startDate}, id: \.id) { place in
                     NavigationLink{
-                        PlaceDetailView(place: $place)
+                        PlaceDetailView(place: Binding(get: {
+                            place
+                        }, set: { newValue in
+                            let index = itinerary.places.firstIndex {
+                                $0.id == newValue.id
+                            }!
+                            
+                            itinerary.places[index] = newValue
+                        }))
                     } label: {
                         HStack(alignment: .top) { // Align items to the top
                             Image(systemName: "paperplane.circle.fill")
@@ -37,18 +45,27 @@ struct itineraryDetailsView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
+                            Spacer()
+                            Text("\(place.startDate, formatter: dateFormatter)")
                         }
                     }
                 }
                 Spacer()
-                Group{
-                    DatePicker("Start:", selection: $itinerary.startdate)
-                    DatePicker("End:", selection: $itinerary.enddate)
+                List{
+                    Section("Dates"){
+                        DatePicker("Start:", selection: $itinerary.startdate)
+                        DatePicker("End:", selection: $itinerary.enddate)
+                    }
+                    Section("More Info"){
+                        
+                    }
                 }
+                .listStyle(.sidebar)
                 .padding()
-                .navigationTitle(itinerary.country)
+                .listStyle(.sidebar)
                 
             }
+            .navigationTitle(itinerary.country)
             .toolbar{
                 ToolbarItem{
                     Button{
@@ -61,9 +78,9 @@ struct itineraryDetailsView: View {
             .sheet(isPresented: $showSheet) {
                 SearchView(itinerary: $itinerary)
             }
-            
-            Text("Thing")
         }
+        .navigationTitle(itinerary.country)
+
     }
 }
 

@@ -15,7 +15,11 @@ struct itineraryView: View {
     var body: some View {
         NavigationStack {
                 List($itineraryManager.itinerarys, editActions: .all) { $itinerary in
-                    NavigationLink(destination: itineraryDetailsView(itinerary: $itinerary, itineraryManager: itineraryManager)) {
+                    
+                     let url = itinerary
+
+                    
+                    NavigationLink(destination: ItineraryDetailsView(itinerary: $itinerary, itineraryManager: itineraryManager)) {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(itinerary.country)
                                     .font(.headline)
@@ -66,9 +70,7 @@ struct itineraryView: View {
                             .padding(.vertical, 8)
                         }
                         .contextMenu(ContextMenu(menuItems: {
-                            Text("hehe")
-                            Text("haha")
-                            Text("M")
+                            Text("jeje")
                         }))
                         .listRowBackground(Color.white)
                 }

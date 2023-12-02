@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A73FA912B187E7400847CBF /* TemporaryItineararyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73FA902B187E7400847CBF /* TemporaryItineararyView.swift */; };
 		1A7D98CB2B16FEDF00FBE8D6 /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D98CA2B16FEDF00FBE8D6 /* PlaceDetailView.swift */; };
 		1A848BD52B103EC5008C5682 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A848BD42B103EC5008C5682 /* Page.swift */; };
 		1A848BD72B103F2D008C5682 /* IntroPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A848BD62B103F2D008C5682 /* IntroPageView.swift */; };
 		1A848BD92B10436A008C5682 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A848BD82B10436A008C5682 /* Tip.swift */; };
+		1AB2D4A92B1AD0190044E8F0 /* SymbolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2D4A82B1AD0190044E8F0 /* SymbolPickerView.swift */; };
+		1AB2D4AB2B1AE3BC0044E8F0 /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2D4AA2B1AE3BB0044E8F0 /* PDFView.swift */; };
 		6C70D8D52B0BC4E400A12AA9 /* final_2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C70D8D42B0BC4E400A12AA9 /* final_2App.swift */; };
 		6C70D8D72B0BC4E400A12AA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C70D8D62B0BC4E400A12AA9 /* ContentView.swift */; };
 		6C70D8D92B0BC4E700A12AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C70D8D82B0BC4E700A12AA9 /* Assets.xcassets */; };
@@ -27,10 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A73FA902B187E7400847CBF /* TemporaryItineararyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryItineararyView.swift; sourceTree = "<group>"; };
 		1A7D98CA2B16FEDF00FBE8D6 /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
 		1A848BD42B103EC5008C5682 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		1A848BD62B103F2D008C5682 /* IntroPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageView.swift; sourceTree = "<group>"; };
 		1A848BD82B10436A008C5682 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		1AB2D4A82B1AD0190044E8F0 /* SymbolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPickerView.swift; sourceTree = "<group>"; };
+		1AB2D4AA2B1AE3BB0044E8F0 /* PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFView.swift; sourceTree = "<group>"; };
 		6C70D8D12B0BC4E400A12AA9 /* final 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "final 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C70D8D42B0BC4E400A12AA9 /* final_2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = final_2App.swift; sourceTree = "<group>"; };
 		6C70D8D62B0BC4E400A12AA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,10 +68,12 @@
 			isa = PBXGroup;
 			children = (
 				6C70D8E92B0BCABA00A12AA9 /* HomeView.swift */,
+				1AB2D4AA2B1AE3BB0044E8F0 /* PDFView.swift */,
 				6CDE1F3E2B0D09F600767B71 /* AddItemView.swift */,
 				6C70D8EB2B0BCF9D00A12AA9 /* AdditineraryView.swift */,
 				6CA4B0012B0D176C0095479F /* SearchView.swift */,
 				6C70D8ED2B0BE70600A12AA9 /* ItineraryDetailsView.swift */,
+				1AB2D4A82B1AD0190044E8F0 /* SymbolPickerView.swift */,
 				6C70D8D62B0BC4E400A12AA9 /* ContentView.swift */,
 				6C7D77582B0F8362005D67CE /* ItineraryView.swift */,
 				1A848BD62B103F2D008C5682 /* IntroPageView.swift */,
@@ -77,6 +85,7 @@
 		6C70D8C82B0BC4E400A12AA9 = {
 			isa = PBXGroup;
 			children = (
+				1A73FA902B187E7400847CBF /* TemporaryItineararyView.swift */,
 				6C70D8D32B0BC4E400A12AA9 /* final 2 */,
 				6C70D8D22B0BC4E400A12AA9 /* Products */,
 			);
@@ -150,7 +159,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					6C70D8D02B0BC4E400A12AA9 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -201,11 +210,14 @@
 				6C70D8D72B0BC4E400A12AA9 /* ContentView.swift in Sources */,
 				6CA4B0022B0D176C0095479F /* SearchView.swift in Sources */,
 				6C7D77592B0F8362005D67CE /* ItineraryView.swift in Sources */,
+				1AB2D4AB2B1AE3BC0044E8F0 /* PDFView.swift in Sources */,
 				6C70D8EA2B0BCABA00A12AA9 /* HomeView.swift in Sources */,
 				1A7D98CB2B16FEDF00FBE8D6 /* PlaceDetailView.swift in Sources */,
+				1AB2D4A92B1AD0190044E8F0 /* SymbolPickerView.swift in Sources */,
 				6C70D8D52B0BC4E400A12AA9 /* final_2App.swift in Sources */,
 				6CDE1F3F2B0D09F600767B71 /* AddItemView.swift in Sources */,
 				1A848BD72B103F2D008C5682 /* IntroPageView.swift in Sources */,
+				1A73FA912B187E7400847CBF /* TemporaryItineararyView.swift in Sources */,
 				6CA4B0042B0D17A50095479F /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +261,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -309,6 +322,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

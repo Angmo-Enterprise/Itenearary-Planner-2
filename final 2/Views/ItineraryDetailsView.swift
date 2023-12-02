@@ -1,14 +1,8 @@
-//
-//  itineraryDetailsView.swift
-//  final 2
-//
-//  Created by Jhala family on 21/11/23.
-//
-
 import SwiftUI
+import UniformTypeIdentifiers
 import MapKit
 
-struct itineraryDetailsView: View {
+struct ItineraryDetailsView: View {
     @Binding var itinerary: Itinerary
     @ObservedObject var itineraryManager: ItineraryManager
     @State var additemtransit = false
@@ -16,44 +10,52 @@ struct itineraryDetailsView: View {
     @State private var showSheet = false
     
     var body: some View {
-        VStack{
-            VStack {
-                List($itinerary.places, id: \.id) { $place in
-                    NavigationLink{
-                        PlaceDetailView(place: $place)
-                    } label: {
-                        HStack(alignment: .top) { // Align items to the top
-                            Image(systemName: "paperplane.circle.fill")
-                                .font(.system(size: 30)) // Adjust the icon size
-                                .foregroundColor(.blue)
-                            
-                            VStack(alignment: .leading) { // Align items to the leading edge
-                                Text(place.placename)
-                                    .font(.headline)
-                                    .fontWeight(.bold)
-                                
-                                // Add a humorous address
-                                Text(place.address)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
+        VStack {
+            List(1..<numberOfDays) { day in
+                Section("Day \(day)") {
+                    ForEach(itinerary.places.filter { $0.startDate > itinerary.startdate + (Double(day) * 60 * 60 * 24) }) { place in
+                        // Your list content here
+                        NavigationLink(destination: PlaceDetailView(place: placeBinding(place))) {
+                            HStack(alignment: .top) {
+                                Image(systemName: "paperplane.circle.fill")
+                                    .font(.system(size: 30))
+                                    .foregroundColor(.blue)
+
+                                VStack(alignment: .leading) {
+                                    Text(place.placename)
+                                        .font(.headline)
+                                        .fontWeight(.bold)
+
+                                    Text(place.address)
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
+                                Spacer()
+                                Text("\(place.startDate, formatter: dateFormatter)")
                             }
                         }
                     }
                 }
-                Spacer()
-                Group{
+            }
+
+            Spacer()
+
+            List {
+                Section("Dates") {
                     DatePicker("Start:", selection: $itinerary.startdate)
                     DatePicker("End:", selection: $itinerary.enddate)
                 }
-                .padding()
-                .navigationTitle(itinerary.country)
-                
+                Section("More Info") {
+                    PDFView()
+                }
             }
-            .toolbar{
-                ToolbarItem{
-                    Button{
+            .listStyle(.sidebar)
+            .padding()
+            .toolbar {
+                ToolbarItem {
+                    Button {
                         showSheet = true
-                    }label: {
+                    } label: {
                         Image(systemName: "plus")
                     }
                 }
@@ -61,9 +63,34 @@ struct itineraryDetailsView: View {
             .sheet(isPresented: $showSheet) {
                 SearchView(itinerary: $itinerary)
             }
-            
-            Text("Thing")
         }
+        .navigationTitle(itinerary.country)
+    }
+
+    private var numberOfDays: Int {
+        Calendar.current.calculateDaysBetween(itinerary.startdate, and: itinerary.enddate)
+    }
+
+    private func placeBinding(_ place: Itinerary.Place) -> Binding<Itinerary.Place> {
+        Binding(
+            get: {
+                place
+            },
+            set: { newValue in
+                if let index = itinerary.places.firstIndex(where: { $0.id == newValue.id }) {
+                    itinerary.places[index] = newValue
+                }
+            }
+        )
+    }
+}
+
+extension Calendar {
+    func calculateDaysBetween(_ from: Date, and to: Date) -> Int {
+        let fromDate = startOfDay(for: from)
+        let toDate = startOfDay(for: to)
+        let numberOfDays = dateComponents([.day], from: fromDate, to: toDate)
+        return numberOfDays.day! + 1
     }
 }
 
@@ -73,4 +100,3 @@ let dateFormatter: DateFormatter = {
     formatter.timeStyle = .none
     return formatter
 }()
-
